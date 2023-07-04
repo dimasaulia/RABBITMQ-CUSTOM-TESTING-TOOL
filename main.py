@@ -26,7 +26,7 @@ SECRET = {
     "username": "dimasaulia",
     "password": "T4np4$4nd1"
 }
-RUID = "yXeWi"
+RUID = "lK7U2"
 LOGIN = requests.post(url=f'{BASE_URL}/api/v1/user/login', json=SECRET)
 ADMIN_AUTH = LOGIN.cookies
 
@@ -103,17 +103,19 @@ class FakeConnection:
             # channel.queue_bind(exchange=exchange,
             #                    queue=queue_name, routing_key=bindingKey)
 
-            data = {
-                "cardNumber": "E82a4b2BA0Db",
-                "cardPin": "$2b$10$n39.7Zz/NSPTI3iXudyqoeI7xVhH0yx.OHQYwuW1l6SRT3RmQAAIq",
-                "cardStatus": "REGISTER",
-                "isBanned": False,
-                "isTwoStepAuth": True,
-                "duid": "Z37YC",
-                "createdAt": "2023-06-25T18:31:42.258Z",
-                "messageId": cuid.cuid(),
-                "broadcastTimeAt": datetime.now().isoformat()
-            }
+            # data = {
+            #     "cardNumber": "E82a4b2BA0Db",
+            #     "cardPin": "$2b$10$n39.7Zz/NSPTI3iXudyqoeI7xVhH0yx.OHQYwuW1l6SRT3RmQAAIq",
+            #     "cardStatus": "REGISTER",
+            #     "isBanned": False,
+            #     "isTwoStepAuth": True,
+            #     "duid": "Z37YC",
+            #     "createdAt": "2023-06-25T18:31:42.258Z",
+            #     "messageId": cuid.cuid(),
+            #     "broadcastTimeAt": datetime.now().isoformat()
+            # }
+            data = {"message": "Dummy payload for incres traffic",
+                    "id": cuid.cuid()}
             channel.basic_publish(
                 exchange=exchange,
                 routing_key=bindingKey,
